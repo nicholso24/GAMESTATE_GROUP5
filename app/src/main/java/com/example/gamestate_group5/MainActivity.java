@@ -1,5 +1,12 @@
 package com.example.gamestate_group5;
 
+/*
+@author Saylene Hernanedez, John Nicholson, Chiara Profenna, Megan Ly
+@team 5
+@date 03.11.2021
+
+ */
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -21,41 +28,41 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                // 1) Any text currently displayed in in the multi-line EditText (probably from a
-                // previous test run) should be cleared.
+                // clears the multi-line EditText
                 EditText multilineText = (EditText) findViewById(R.id.editTextTextMultiLine);
                 multilineText.setText("");
 
-                // 2) A new instance of the game state class is created using the default constructor and
-                // assigned to a variable named firstInstance.
+                // new instance of game state class
                 GameState firstInstance = new GameState();
 
-                // 3) Use your other constructor to create a deep copy of firstInstance from the perspective
-                // of player one. Assign this copy to a variable named secondInstance.
+                // deep copy of firstInstance
                 GameState secondInstance = new GameState(firstInstance);
 
-                // 4) Using firstInstance, call each method in the game state class at least once. In
-                // each case it should be making a legal move in the game.
-                // For each method call, a brief description of the action taken should be
-                // printed to the multi-line EditText.
-                // New messages should be appended to previous ones, not overwrite them.
+                // calls game state methods
                 firstInstance.playTest();
 
-                // 5) Create a new instance of the game state class using the default constructor.
-                // Assign this value to a variable named thirdInstance.
+                // description of methods:
+                multilineText.append("player plays card on discard pile\n");
+                multilineText.append("player skips the next player's turn\n");
+                multilineText.append("player reverses the direction of play\n");
+                multilineText.append("player makes next player draw 2 cards from pile & skips their turn\n");
+                multilineText.append("player has used a wild card to change the color\n");
+                multilineText.append("player has used a wild card to change the color " +
+                        "& make thee next player draw 4 cards\n");
+                multilineText.append("player presses uno button, indicates 1 card in hand left\n");
+                multilineText.append("player draws card from drawing pile\n");
+
+                // creates another new instance of game state class
                 GameState thirdInstance = new GameState();
 
-                // 6) Use your deep copy constructor to make a deep copyof thirdInstance from
-                // the perspective of player one. Assign this copy to a variable named fourthInstance.
-                // need deep opy to be completed first
+                // deep copy of thirdInstance
                 GameState fourthInstance = new GameState(thirdInstance);
 
-                // 7) Call the toString() method on secondInstance and fourthInstance.
-                // The two strings should be identical. Your code should verify this.
-                // Also, print both strings to the multi-line EditText for visual inspection.
-                // Again, append these rather than overwrite previous messages.
+                // calls toString() method on secondInstance and fourthInstance; prints to screen
                 secondInstance.toString();
+                multilineText.append("second instance: "+secondInstance.toString()+"\n");
                 fourthInstance.toString();
+                multilineText.append("fourth instance: "+fourthInstance.toString()+"\n");
 
             }
         });
