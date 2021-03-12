@@ -1,7 +1,5 @@
 package com.example.gamestate_group5;
 
-import java.util.ArrayList;
-
 public class Card {
     private int numOnCard;
     private int colorOnCard; // 1 is Red, 2 is Green, 3 is Blue, 4 is Yellow
@@ -25,12 +23,7 @@ public class Card {
         return typeOfCard;
     }
 
-    //@Override
-    //public String toString() {
-       // return String.valueOf(numOnCard + colorOnCard + getNum()+ getColor());
-   // }
 
-    //John
     @Override
     public String toString() {
         return String.valueOf(numOnCard) + String.valueOf(colorOnCard) + " " + typeOfCard;
