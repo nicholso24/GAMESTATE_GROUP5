@@ -140,6 +140,7 @@ public class GameState {
     public void playTest() {
         cardsInHandP1.clear();
         cardsInHandP2.clear();
+        drawPile.clear();
         Card red1 = new Card(1, 1, "normal");
         Card redSkip = new Card(-1, 1, "skip");
         Card redDraw2 = new Card(-2, 1, "draw2");
@@ -147,6 +148,15 @@ public class GameState {
         Card wild = new Card(-4, 0, "wild");
         Card wildDraw4 = new Card(-5, 0, "wildDraw4");
         Card yellow1 = new Card(1, 4, "normal");
+        Card yellow2 = new Card(2, 4, "normal");
+        Card yellow3 = new Card(3, 4, "normal");
+        Card yellow4 = new Card(4, 4, "normal");
+        Card yellow5 = new Card(5, 4, "normal");
+
+        drawPile.add(yellow2);
+        drawPile.add(yellow3);
+        drawPile.add(yellow4);
+        drawPile.add(yellow5);
 
         Card blue1 = new Card(1, 3, "normal");
         cardInPlay = yellow1;
