@@ -39,14 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 // For each method call, a brief description of the action taken should be
                 // printed to the multi-line EditText.
                 // New messages should be appended to previous ones, not overwrite them.
-                firstInstance.playCard();
-                multilineText.append("player plays card on discard pile\n");
-                firstInstance.drawCard();
-                multilineText.append("player draws card from drawing pile\n");
-                firstInstance.sayUno();
-                multilineText.append("player presses uno button, indicates 1 card in hand left\n");
-                firstInstance.useWild();
-                multilineText.append("player has used a wild card to change the color\n");
+                firstInstance.playTest();
 
                 // 5) Create a new instance of the game state class using the default constructor.
                 // Assign this value to a variable named thirdInstance.
