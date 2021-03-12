@@ -1,6 +1,7 @@
 package com.example.gamestate_group5;
 
 import android.util.Log;
+import android.widget.EditText;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,7 +11,7 @@ import java.util.Random;
 public class GameState {
     private ArrayList<Card> cardsInHandP1;
     private ArrayList<Card> cardsInHandP2;
-    private Card[] deckOfCards;
+    private Card[] deckOfCards; //for the start of the game
     private Card cardInPlay;
 
     private ArrayList<Card> drawPile;
@@ -168,7 +169,6 @@ public class GameState {
         cardsInHandP2.add(redSkip);
         cardsInHandP2.add(redReverse);
         cardsInHandP2.add(wild);
-
 
         playCard(cardsInHandP1,cardsInHandP1.get(0));
         useSkip(cardsInHandP2, cardsInHandP2.get(0));
