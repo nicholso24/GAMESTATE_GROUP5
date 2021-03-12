@@ -1,5 +1,12 @@
 package com.example.gamestate_group5;
 
+/*
+@author Saylene Hernanedez, John Nicholson, Chiara Profenna, Megan Ly
+@team 5
+@date 03.11.2021
+
+ */
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;

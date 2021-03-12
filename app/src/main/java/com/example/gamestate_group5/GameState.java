@@ -8,6 +8,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+/*
+@author Saylene Hernanedez, John Nicholson, Chiara Profenna, Megan Ly
+@team 5
+@date 03.11.2021
+
+ */
+
 public class GameState {
     private ArrayList<Card> cardsInHandP1;
     private ArrayList<Card> cardsInHandP2;
