@@ -53,9 +53,9 @@ public class MainActivity extends AppCompatActivity {
 
                 // calls toString() method on secondInstance and fourthInstance; prints to screen
                 secondInstance.toString();
-                multilineText.append("second instance: "+secondInstance.toString());
+                multilineText.append("second instance: "+secondInstance+"\n");
                 fourthInstance.toString();
-                multilineText.append("fourth instance: "+fourthInstance.toString());
+                multilineText.append("fourth instance: "+fourthInstance+"\n");
 
             }
         });

@@ -119,18 +119,18 @@ public class GameState {
 
     }
 
-    public GameState(GameState g) {
-        playerTurn = g.playerTurn;
-        cardInPlay = g.cardInPlay;
-        ArrayList<Card> cardsInHandP1List = new ArrayList<Card>();
-        for (int i = 0; i < cardsInHandP1.size(); i++)
+    public GameState(GameState other) {
+        this.playerTurn = other.playerTurn;
+        this.cardInPlay = other.cardInPlay;
+        this.cardsInHandP1 = new ArrayList<Card>();
+        for (int i = 0; i < other.cardsInHandP1.size(); i++)
         {
-            cardsInHandP1List.add(cardsInHandP1.get(i));
+            this.cardsInHandP1.add(new Card (other.cardsInHandP1.get(i)));
         }
 
-        ArrayList<Card> cardsInHandP2List = new ArrayList<Card>();
-        for (int i = 0; i < cardsInHandP2.size(); i++){
-            cardsInHandP2List.add(cardsInHandP2.get(i));
+        this.cardsInHandP2 = new ArrayList<Card>();
+        for (int i = 0; i < other.cardsInHandP2.size(); i++){
+            this.cardsInHandP2.add(new Card (other.cardsInHandP2.get(i)));
         }
 
 

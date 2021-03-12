@@ -10,6 +10,13 @@ public class Card {
         colorOnCard = color;
         typeOfCard = typeOfCard;
     }
+
+    public Card(Card other){
+        this.numOnCard = other.numOnCard;
+        this.colorOnCard = other.colorOnCard;
+        this.typeOfCard = other.typeOfCard;
+    }
+
     public int getNum() {
         return numOnCard;
     }
