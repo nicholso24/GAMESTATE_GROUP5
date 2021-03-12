@@ -120,6 +120,19 @@ public class GameState {
 
     public GameState(GameState g) {
         playerTurn = g.playerTurn;
+        cardInPlay = g.cardInPlay;
+        ArrayList<Card> cardsInHandP1List = new ArrayList<Card>();
+        for (int i = 0; i < cardsInHandP1.size(); i++)
+        {
+            cardsInHandP1List.add(cardsInHandP1.get(i));
+        }
+
+        ArrayList<Card> cardsInHandP2List = new ArrayList<Card>();
+        for (int i = 0; i < cardsInHandP2.size(); i++){
+            cardsInHandP2List.add(cardsInHandP2.get(i));
+        }
+
+
 
     }
 
@@ -223,5 +236,15 @@ public class GameState {
         }
         return true;
      }
+
+
+    //toString method
+    //@Override
+    //public String toString() {
+       // <string name =
+
+       // return ;
+   // }
+
 
 }

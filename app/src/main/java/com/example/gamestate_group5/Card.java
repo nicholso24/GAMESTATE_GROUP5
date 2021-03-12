@@ -23,6 +23,7 @@ public class Card {
         return typeOfCard;
     }
 
+
     @Override
     public String toString() {
         return String.valueOf(numOnCard) + String.valueOf(colorOnCard) + " " + typeOfCard;
