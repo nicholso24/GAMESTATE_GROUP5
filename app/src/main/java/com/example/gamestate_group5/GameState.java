@@ -139,22 +139,35 @@ public class GameState {
     public void playTest() {
         cardsInHandP1.clear();
         cardsInHandP2.clear();
-        Card green1 = new Card(1, 2, "normal");
-        Card greenSkip = new Card(0, 2, "skip");
-        Card redDraw2 = new Card(0, 1, "draw2");
-        Card blueReverse = new Card(0, 3, "reverse");
-        Card wild = new Card(0, 0, "wild");
-        Card wildDraw4 = new Card(0, 0, "wildDraw4");
+        Card red1 = new Card(1, 1, "normal");
+        Card redSkip = new Card(-1, 1, "skip");
+        Card redDraw2 = new Card(-2, 1, "draw2");
+        Card redReverse = new Card(-3, 1, "reverse");
+        Card wild = new Card(-4, 0, "wild");
+        Card wildDraw4 = new Card(-5, 0, "wildDraw4");
         Card yellow1 = new Card(1, 4, "normal");
 
         Card blue1 = new Card(1, 3, "normal");
-        cardInPlay = greenSkip;
+        cardInPlay = yellow1;
 
-        cardsInHandP1.add(green1);
+        cardsInHandP1.add(red1);
+        cardsInHandP1.add(redDraw2);
+        cardsInHandP1.add(wildDraw4);
+        cardsInHandP1.add(blue1);
 
-        cardsInHandP2.add(blueReverse);
+        cardsInHandP2.add(redSkip);
+        cardsInHandP2.add(redReverse);
+        cardsInHandP2.add(wild);
+
 
         playCard(cardsInHandP1,cardsInHandP1.get(0));
+        useSkip(cardsInHandP2, cardsInHandP2.get(0));
+        useReverse(cardsInHandP2,cardsInHandP2.get(0));
+        useDraw2(cardsInHandP1,cardsInHandP1.get(0), cardsInHandP2);
+        useWild(cardsInHandP2, cardsInHandP2.get(0), 1);
+        useWildDraw4(cardsInHandP1, cardsInHandP1.get(0), cardsInHandP2);
+        sayUno(cardsInHandP2);
+
 
     }
 
@@ -163,6 +176,8 @@ public class GameState {
     public boolean playCard(ArrayList<Card> currentHand,Card cardPlayed) {
         if(cardPlayed.getColor() == cardInPlay.getColor() || cardPlayed.getNum() == cardInPlay.getNum() || cardPlayed.getNum() < -3) {
             cardInPlay = cardPlayed;
+            currentHand.remove(cardPlayed);
+            currentHand.trimToSize();
             playerTurn++;
             Log.d("Played", "Card has been played");
             return true;
