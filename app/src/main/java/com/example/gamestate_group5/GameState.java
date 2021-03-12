@@ -1,6 +1,7 @@
 package com.example.gamestate_group5;
 
 import android.util.Log;
+import android.widget.EditText;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -158,7 +159,6 @@ public class GameState {
         cardsInHandP2.add(redSkip);
         cardsInHandP2.add(redReverse);
         cardsInHandP2.add(wild);
-
 
         playCard(cardsInHandP1,cardsInHandP1.get(0));
         useSkip(cardsInHandP2, cardsInHandP2.get(0));

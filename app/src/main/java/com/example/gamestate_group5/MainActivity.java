@@ -34,16 +34,16 @@ public class MainActivity extends AppCompatActivity {
                 // calls game state methods
                 firstInstance.playTest();
 
-                // NEED DESCRIPTIONS OF ACTIONS PRINTED TO MULTI-LINE EDITTEXT
-
-                /*firstInstance.playCard();
+                // description of methods:
                 multilineText.append("player plays card on discard pile\n");
-                firstInstance.drawCard();
-                multilineText.append("player draws card from drawing pile\n");
-                firstInstance.sayUno();
+                multilineText.append("player skips the next player's turn\n");
+                multilineText.append("player reverses the direction of play\n");
+                multilineText.append("player makes next player draw 2 cards from pile & skips their turn\n");
+                multilineText.append("player has used a wild card to change the color\n");
+                multilineText.append("player has used a wild card to change the color " +
+                        "& make thee next player draw 4 cards\n");
                 multilineText.append("player presses uno button, indicates 1 card in hand left\n");
-                firstInstance.useWild();
-                multilineText.append("player has used a wild card to change the color\n");*/
+                multilineText.append("player draws card from drawing pile\n");
 
                 // creates another new instance of game state class
                 GameState thirdInstance = new GameState();
