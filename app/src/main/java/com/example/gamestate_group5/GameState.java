@@ -10,7 +10,7 @@ import java.util.Random;
 public class GameState {
     private ArrayList<Card> cardsInHandP1;
     private ArrayList<Card> cardsInHandP2;
-    private Card[] deckOfCards;
+    private Card[] deckOfCards; //for the start of the game
     private Card cardInPlay;
 
     private ArrayList<Card> drawPile;
