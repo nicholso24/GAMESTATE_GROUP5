@@ -141,40 +141,87 @@ public class GameState {
 
         cardsInHandP2.add(blueReverse);
 
-        playCard(cardsInHandP1.get(0));
+        playCard(cardsInHandP1,cardsInHandP1.get(0));
 
     }
-    public boolean playCard(Card cardPlayed) {
-        if(cardPlayed.getColor() == cardInPlay.getColor() || cardPlayed.getNum() == cardInPlay.getNum()) {
+
+    // Actions taken by player
+    // Using each hand as a player until player class is formed
+    public boolean playCard(ArrayList<Card> currentHand,Card cardPlayed) {
+        if(cardPlayed.getColor() == cardInPlay.getColor() || cardPlayed.getNum() == cardInPlay.getNum() || cardPlayed.getNum() < -3) {
             cardInPlay = cardPlayed;
+            playerTurn++;
             Log.d("Played", "Card has been played");
             return true;
         }
         return false;
     }
-    public boolean drawCard() {
-        for(int i = 0; i < cardsInHandP1.size(); i++) {
-            if(cardsInHandP1.get(i).getColor() == cardInPlay.getColor() || cardsInHandP1.get(i).getNum() == cardInPlay.getNum()) {
+    public boolean drawCard(ArrayList<Card> currentHand) {
+        for(int i = 0; i < currentHand.size(); i++) {
+            if(currentHand.get(i).getColor() == cardInPlay.getColor() || currentHand.get(i).getNum() == cardInPlay.getNum()) {
                 return false;
             }
         }
         // Add to Array cardsInHand the card that is drawn
+        currentHand.add(drawPile.get(0));
+        drawPile.remove(0);
+        drawPile.trimToSize();
+        playerTurn++;
 
         return true;
     }
-    public boolean sayUno() {
+    public boolean sayUno(ArrayList<Card> currentHand) {
         if(cardsInHandP1.size() == 1 || cardsInHandP2.size() == 1) {
             return true;
         }
 
         return false;
     }
-    public boolean useWild(Card cardPlayed) {
+    public boolean useWild(ArrayList<Card> currentHand,Card cardPlayed, int color) {
         if(cardPlayed.getType() == "wild") {
+            cardInPlay.setColor(color);
+            playCard(currentHand, cardPlayed);
+
             return true;
         }
         return false;
     }
+     public boolean useDraw2(ArrayList<Card> currentHand, Card cardPlayed, ArrayList<Card> otherHand) {
+        if(cardPlayed.getType() != "draw2") {
+            return false;
+        }
+        playCard(currentHand, cardPlayed);
 
+        drawCard(otherHand);
+        drawCard(otherHand);
+        return true;
+     }
+     public boolean useSkip(ArrayList<Card> currentHand, Card cardPlayed) {
+        if(cardPlayed.getType() != "skip") {
+            return false;
+        }
+        playCard(currentHand, cardPlayed);
+        playerTurn++;
+        return true;
+     }
+
+     public boolean useReverse(ArrayList<Card> currentHand, Card cardPlayed) {
+        if(cardPlayed.getType() != "reverse") {
+            return false;
+        }
+        playCard(currentHand, cardPlayed);
+        return true;
+
+     }
+     public boolean useWildDraw4(ArrayList<Card> currentHand, Card cardPlayed, ArrayList<Card> otherHand) {
+        if(cardPlayed.getType() != "wildDraw4") {
+            return false;
+        }
+        playCard(currentHand, cardPlayed);
+        for(int i = 0; i < 4; i++) {
+            drawCard(otherHand);
+        }
+        return true;
+     }
 
 }
