@@ -18,14 +18,18 @@ import java.util.Random;
 public class GameState {
     private ArrayList<Card> cardsInHandP1;
     private ArrayList<Card> cardsInHandP2;
-    private Card[] deckOfCards; //for the start of the game
+    private Card[] deckOfCards; // change to arraylist
     private Card cardInPlay;
 
-    private ArrayList<Card> drawPile;
+    // add arraylist of discards
+
+    private ArrayList<Card> drawPile; // may not need
     private int playerTurn;
-    private int stageOfGame;
-    private String typeOfCard;
-    private boolean hasCalledUno;
+    private int stageOfGame; // maybe not needed
+    private String typeOfCard; // maybe not needed
+    private boolean hasCalledUno; // needs to exist for both players
+
+    // add players 3&4
 
     public GameState() {
 
@@ -187,6 +191,8 @@ public class GameState {
 
 
     }
+
+    // reshuffle method: automatic when draw is empty
 
     // Actions taken by player
     // Using each hand as a player until player class is formed
