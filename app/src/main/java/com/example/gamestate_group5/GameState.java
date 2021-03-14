@@ -1,8 +1,11 @@
 package com.example.gamestate_group5;
 
 import android.util.Log;
+import android.widget.EditText;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 /*
@@ -15,14 +18,20 @@ import java.util.Random;
 public class GameState {
     private ArrayList<Card> cardsInHandP1;
     private ArrayList<Card> cardsInHandP2;
-    private Card[] deckOfCards; //for the start of the game
+    private Card[] deckOfCards; // change to arraylist
     private Card cardInPlay;
     private int discardPile; //where all the cards go after they're played
     private ArrayList<Card> drawPile;
+
+    // add arraylist of discards
+
+    private ArrayList<Card> drawPile; // may not need
     private int playerTurn;
-    private int stageOfGame;
-    private String typeOfCard;
-    private boolean hasCalledUno;
+    private int stageOfGame; // maybe not needed
+    private String typeOfCard; // maybe not needed
+    private boolean hasCalledUno; // needs to exist for both players
+
+    // add players 3&4
 
     public GameState() {
 
@@ -225,9 +234,6 @@ public class GameState {
 
         return true;
     }
-
-
-
     public boolean sayUno(ArrayList<Card> currentHand) {
         if(cardsInHandP1.size() == 1 || cardsInHandP2.size() == 1) {
             return true;
