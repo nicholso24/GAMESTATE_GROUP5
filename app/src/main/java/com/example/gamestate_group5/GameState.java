@@ -19,6 +19,9 @@ public class GameState {
     private Card cardInPlay;
     private int discardPile; //where all the cards go after they're played
 
+    //private ArrayList<Card> drawPile;
+
+
     // add arraylist of discards
 
     private ArrayList<Card> drawPile; // may not need
@@ -202,8 +205,6 @@ public class GameState {
 
 
     }
-
-    // reshuffle method: automatic when draw is empty
 
     // Actions taken by player
     // Using each hand as a player until player class is formed
