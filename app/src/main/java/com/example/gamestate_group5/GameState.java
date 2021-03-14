@@ -18,7 +18,6 @@ public class GameState {
     private Card[] deckOfCards; //for the start of the game
     private Card cardInPlay;
     private int discardPile; //where all the cards go after they're played
-
     private ArrayList<Card> drawPile;
     private int playerTurn;
     private int stageOfGame;
