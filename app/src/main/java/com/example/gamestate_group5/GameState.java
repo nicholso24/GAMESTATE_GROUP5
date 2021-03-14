@@ -22,6 +22,10 @@ public class GameState {
     private Card cardInPlay;
     private ArrayList <Card> discardPile; //where all the cards go after they're played
     private ArrayList<Card> drawPile;
+    //private int discardPile; //where all the cards go after they're played
+
+    //private ArrayList<Card> drawPile;
+
 
     // add arraylist of discards
 
@@ -236,6 +240,9 @@ public class GameState {
 
         return true;
     }
+
+
+
     public boolean sayUno(ArrayList<Card> currentHand) {
         if(cardsInHandP1.size() == 1 || cardsInHandP2.size() == 1) {
             return true;
