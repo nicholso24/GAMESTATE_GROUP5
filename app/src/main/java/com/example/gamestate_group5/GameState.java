@@ -87,10 +87,6 @@ public class GameState {
             deckOfCards[i] = temp;
         }
 
-
-        
-
-
         // Shuffle
         Random rand = new Random();
         for(int i = 0; i < deckOfCards.length; i++) {
@@ -99,9 +95,6 @@ public class GameState {
             deckOfCards[randomIdx] = deckOfCards[i];
             deckOfCards[i] = temp;
         }
-
-
-
 
         cardInPlay = deckOfCards[0];
 
@@ -122,12 +115,9 @@ public class GameState {
             drawPile.set(i, deckOfCards[i+17]);
         }
 
-
-
         playerTurn = 1;
 
         stageOfGame = 2; // 1 is Setup, 2 is in-play, 3 is GameOver
-
 
     }
 
@@ -157,8 +147,6 @@ public class GameState {
         for (int i = 0; i < other.cardsInHandP2.size(); i++){
             this.cardsInHandP2.add(new Card (other.cardsInHandP2.get(i)));
         }
-
-
 
     }
 
@@ -289,15 +277,5 @@ public class GameState {
         }
         return true;
      }
-
-
-    //toString method
-    //@Override
-    //public String toString() {
-       // <string name =
-
-       // return ;
-   // }
-
 
 }
