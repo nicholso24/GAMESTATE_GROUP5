@@ -85,10 +85,6 @@ public class GameState {
             deckOfCards.add(temp);
         }
 
-
-        
-
-
         // Shuffle
         Random rand = new Random();
         for(int i = 0; i < deckOfCards.size(); i++) {
@@ -101,7 +97,9 @@ public class GameState {
 
 
 
+
         cardInPlay = deckOfCards.get(0);
+
 
         cardsInHandP1 = new ArrayList<Card>(7);
         for(int i = 0; i < cardsInHandP1.size(); i++) {
@@ -120,26 +118,12 @@ public class GameState {
             drawPile.set(i, deckOfCards.get(i+1));
         }
 
-
-
         playerTurn = 1;
 
 
-
     }
 
-    //When the drawPile pile is empty it reshuffles the deck
-    public void reShuffle(ArrayList<Card> drawPile){
-        Random rand = new Random();
-        if(drawPile.size() == 0) {
-            for (int i = 0; i < deckOfCards.length; i++) {
-                int randomIdx = rand.nextInt(deckOfCards.length);
-                Card temp = deckOfCards[randomIdx];
-                deckOfCards[randomIdx] = deckOfCards[i];
-                deckOfCards[i] = temp;
-            }
-        }
-    }
+    
 
     public GameState(GameState other) {
         this.playerTurn = other.playerTurn;
@@ -154,8 +138,6 @@ public class GameState {
         for (int i = 0; i < other.cardsInHandP2.size(); i++){
             this.cardsInHandP2.add(new Card (other.cardsInHandP2.get(i)));
         }
-
-
 
     }
 
@@ -286,15 +268,5 @@ public class GameState {
         }
         return true;
      }
-
-
-    //toString method
-    //@Override
-    //public String toString() {
-       // <string name =
-
-       // return ;
-   // }
-
 
 }
