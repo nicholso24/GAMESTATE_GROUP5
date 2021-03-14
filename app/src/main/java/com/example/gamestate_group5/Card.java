@@ -26,6 +26,7 @@ public class Card {
     public int getNum() {
         return numOnCard;
     }
+
     public int getColor() {
         return colorOnCard;
     }
