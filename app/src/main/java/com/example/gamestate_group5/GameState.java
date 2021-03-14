@@ -1,11 +1,8 @@
 package com.example.gamestate_group5;
 
 import android.util.Log;
-import android.widget.EditText;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 
 /*
@@ -20,6 +17,7 @@ public class GameState {
     private ArrayList<Card> cardsInHandP2;
     private Card[] deckOfCards; //for the start of the game
     private Card cardInPlay;
+    private int discardPile; //where all the cards go after they're played
 
     private ArrayList<Card> drawPile;
     private int playerTurn;
@@ -126,6 +124,19 @@ public class GameState {
 
     }
 
+    //When the drawPile pile is empty it reshuffles the deck
+    public void reShuffle(ArrayList<Card> drawPile){
+        Random rand = new Random();
+        if(drawPile.size() == 0) {
+            for (int i = 0; i < deckOfCards.length; i++) {
+                int randomIdx = rand.nextInt(deckOfCards.length);
+                Card temp = deckOfCards[randomIdx];
+                deckOfCards[randomIdx] = deckOfCards[i];
+                deckOfCards[i] = temp;
+            }
+        }
+    }
+
     public GameState(GameState other) {
         this.playerTurn = other.playerTurn;
         this.cardInPlay = other.cardInPlay;
@@ -215,6 +226,9 @@ public class GameState {
 
         return true;
     }
+
+
+
     public boolean sayUno(ArrayList<Card> currentHand) {
         if(cardsInHandP1.size() == 1 || cardsInHandP2.size() == 1) {
             return true;
