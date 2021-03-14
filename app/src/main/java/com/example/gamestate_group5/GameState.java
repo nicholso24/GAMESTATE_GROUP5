@@ -20,12 +20,12 @@ public class GameState {
     private ArrayList<Card> cardsInHandP2;
     private Card[] deckOfCards; // change to arraylist
     private Card cardInPlay;
-    private int discardPile; //where all the cards go after they're played
+    private ArrayList <Card> discardPile; //where all the cards go after they're played
     private ArrayList<Card> drawPile;
 
     // add arraylist of discards
 
-    private ArrayList<Card> drawPile; // may not need
+    //private ArrayList<Card> drawPile; // may not need
     private int playerTurn;
     private int stageOfGame; // maybe not needed
     private String typeOfCard; // maybe not needed
@@ -136,11 +136,11 @@ public class GameState {
     public void reShuffle(ArrayList<Card> drawPile){
         Random rand = new Random();
         if(drawPile.size() == 0) {
-            for (int i = 0; i < deckOfCards.length; i++) {
-                int randomIdx = rand.nextInt(deckOfCards.length);
-                Card temp = deckOfCards[randomIdx];
-                deckOfCards[randomIdx] = deckOfCards[i];
-                deckOfCards[i] = temp;
+            for (int i = 0; i < discardPile.size(); i++) {
+                int randomIdx = rand.nextInt(discardPile.size());
+                Card temp = discardPile.get(randomIdx);
+                drawPile.set(randomIdx, discardPile.get(i));
+                //deckOfCards[i] = temp;
             }
         }
     }
@@ -211,11 +211,13 @@ public class GameState {
     // Using each hand as a player until player class is formed
     public boolean playCard(ArrayList<Card> currentHand,Card cardPlayed) {
         if(cardPlayed.getColor() == cardInPlay.getColor() || cardPlayed.getNum() == cardInPlay.getNum() || cardPlayed.getNum() < -3) {
+            discardPile.add(cardInPlay);
             cardInPlay = cardPlayed;
             currentHand.remove(cardPlayed);
             currentHand.trimToSize();
             playerTurn++;
             Log.d("Played", "Card has been played");
+
             return true;
         }
         return false;
