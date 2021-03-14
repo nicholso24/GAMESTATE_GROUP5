@@ -15,9 +15,9 @@ import java.util.Random;
 public class GameState {
     private ArrayList<Card> cardsInHandP1;
     private ArrayList<Card> cardsInHandP2;
-    private Card[] deckOfCards; // change to arraylist
+    private ArrayList<Card> deckOfCards; // change to arraylist
     private Card cardInPlay;
-    private int discardPile; //where all the cards go after they're played
+    private ArrayList<Card> discardPile; //where all the cards go after they're played
 
     //private ArrayList<Card> drawPile;
 
@@ -26,22 +26,20 @@ public class GameState {
 
     private ArrayList<Card> drawPile; // may not need
     private int playerTurn;
-    private int stageOfGame; // maybe not needed
-    private String typeOfCard; // maybe not needed
     private boolean hasCalledUno; // needs to exist for both players
 
     // add players 3&4
 
     public GameState() {
 
-        deckOfCards = new Card[108];
+        deckOfCards = new ArrayList<Card>(108);
         // Set each card in deck
         // Loop for each normal color card from 1-9
         for(int i = 0; i < 72; i++) {
             for(int j = 1; j <= 4; j++) {
                 for(int k = 1; k <= 9; k++) {
                     Card temp = new Card(k, j, "normal");
-                    deckOfCards[i] = temp;
+                    deckOfCards.add(temp);
                 }
 
             }
@@ -52,87 +50,80 @@ public class GameState {
         // Sets zero cards
         for(int i = 72; i < 76; i++) {
             Card temp = new Card(0, i-72, "normal");
-            deckOfCards[i] = temp;
+            deckOfCards.add(temp);
         }
 
         // Sets the Skip Cards
         for(int i = 76; i < 84; i++) {
             for(int j = 1; j <= 4; j++) {
                 Card temp = new Card(-1, j, "skip");
-                deckOfCards[i] = temp;
+                deckOfCards.add(temp);
             }
         }
         // Sets the reverse Cards
         for(int i = 84; i < 92; i ++) {
             for(int j = 1; j <= 4; j++) {
                 Card temp = new Card(-2, j, "reverse");
-                deckOfCards[i] = temp;
+                deckOfCards.add(temp);
             }
         }
         // Sets the draw 2 cards
         for(int i = 92; i < 100; i ++) {
             for(int j = 1; j <= 4; j++) {
                 Card temp = new Card(-3, j, "draw2");
-                deckOfCards[i] = temp;
+                deckOfCards.add(temp);
             }
         }
         // Sets the wild cards
         for(int i = 100; i < 104; i++) {
             Card temp = new Card(-4, -1, "wild");
-            deckOfCards[i] = temp;
+            deckOfCards.add(temp);
         }
         // Sets the wildDraw4 cards
         for(int i = 104; i < 108; i++) {
             Card temp = new Card(-5, -1, "wildDraw4");
-            deckOfCards[i] = temp;
+            deckOfCards.add(temp);
         }
 
         // Shuffle
         Random rand = new Random();
-        for(int i = 0; i < deckOfCards.length; i++) {
-            int randomIdx = rand.nextInt(deckOfCards.length);
-            Card temp = deckOfCards[randomIdx];
-            deckOfCards[randomIdx] = deckOfCards[i];
-            deckOfCards[i] = temp;
+        for(int i = 0; i < deckOfCards.size(); i++) {
+            int randomIdx = rand.nextInt(deckOfCards.size());
+            Card temp = deckOfCards.get(randomIdx);
+            deckOfCards.set(randomIdx, deckOfCards.get(i));
+            deckOfCards.set(i, temp);
         }
 
-        cardInPlay = deckOfCards[0];
+
+
+
+
+        cardInPlay = deckOfCards.get(0);
+
 
         cardsInHandP1 = new ArrayList<Card>(7);
         for(int i = 0; i < cardsInHandP1.size(); i++) {
-            cardsInHandP1.set(i, deckOfCards[i+1]);
+            cardsInHandP1.set(i, deckOfCards.get(i+1));
         }
         // Cards in hand equal [1-8]
 
         cardsInHandP2 = new ArrayList<Card>(7);
         for(int i = 0; i < cardsInHandP2.size(); i++) {
-            cardsInHandP2.set(i, deckOfCards[i+9]);
+            cardsInHandP2.set(i, deckOfCards.get(i+1));
         }
         // Cards in cpHand = [9-16]
 
         drawPile = new ArrayList<Card>(93);
         for(int i = 0; i < drawPile.size(); i++) {
-            drawPile.set(i, deckOfCards[i+17]);
+            drawPile.set(i, deckOfCards.get(i+1));
         }
 
         playerTurn = 1;
 
-        stageOfGame = 2; // 1 is Setup, 2 is in-play, 3 is GameOver
 
     }
 
-    //When the drawPile pile is empty it reshuffles the deck
-    public void reShuffle(ArrayList<Card> drawPile){
-        Random rand = new Random();
-        if(drawPile.size() == 0) {
-            for (int i = 0; i < deckOfCards.length; i++) {
-                int randomIdx = rand.nextInt(deckOfCards.length);
-                Card temp = deckOfCards[randomIdx];
-                deckOfCards[randomIdx] = deckOfCards[i];
-                deckOfCards[i] = temp;
-            }
-        }
-    }
+    
 
     public GameState(GameState other) {
         this.playerTurn = other.playerTurn;
