@@ -23,7 +23,7 @@ public class GameState {
     private ArrayList <Card> discardPile; //where all the cards go after they're played
     private ArrayList<Card> drawPile;
     //private int discardPile; //where all the cards go after they're played
-    private ArrayList<Card> discardPile; //where all the cards go after they're played
+    //private ArrayList<Card> discardPile; //where all the cards go after they're played
 
     //private ArrayList<Card> drawPile;
 
